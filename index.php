@@ -21,9 +21,9 @@
 		$htmlOutput .= "<form action='sumbit.php' method='post'>";
 		$candidates = get_candidates();
 		foreach ( $candidates as $id => $name ){
-			$htmlOutput .= ("<input type='radio' name='candidate_id' value='".$id."'>".$name."<br>" );
+			$htmlOutput .= ("<input type='radio' name='candidate_id' value='".$id."' required >".$name."<br>" );
 		}
-		$htmlOutput .= "</form>";
+		$htmlOutput .= "<input type='submit' value='Vote'></form>";
 	}
 	else {
 
