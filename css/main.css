@@ -1,0 +1,39 @@
+body {
+	background-color: #fbfbfb;
+}
+
+.navbar:before,
+.navbar:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.navbar:after {
+    clear: both;
+}
+
+.navbar {
+    background-color: #057cb8;
+    color: white !important;
+}
+
+.nav {
+	font-size: 1.5em;
+	padding: 0.5em;
+}
+
+.nav.left {
+	float: left;
+}
+
+.nav.right {
+	float: right;
+}
+
+.main {
+	width: 960px;
+	margin: auto;
+	margin-top: 10px;
+	color: #555;
+	font-size: 1.2em;
+}

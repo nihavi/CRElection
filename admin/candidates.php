@@ -1,5 +1,5 @@
 <?php
-	include('../config.php');
+	require_once('../config.php');
 	
 	$query = mysqli_prepare($DB, "SELECT id, name FROM `candidates`");
 	mysqli_stmt_execute($query);
