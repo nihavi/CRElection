@@ -1,9 +1,9 @@
 #Portal for Class Representative Elections
 
-##Just for digitalizing paper work :)
+##Why use paper when you have a computer?
 
 ##Setup
 
 1. Create mysql Database.
 2. Run `CRE.sql` to setup database.
-3. Update `config.php` and set required things.
+3. Update `config.php` with required settings.
