@@ -33,7 +33,11 @@ body {
 .container {
     background-color: #f0f0f0;
     padding: 2em;
-    width: 80%;
+    width: 70%;
     margin: 3em auto;
     color: #333;
+}
+
+input {
+	margin: 0.4em;
 }

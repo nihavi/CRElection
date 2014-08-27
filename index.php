@@ -21,7 +21,7 @@
 		$htmlOutput .= "<form action='submit.php' method='post'>";
 		$candidates = get_candidates();
 		foreach ( $candidates as $id => $name ){
-			$htmlOutput .= ("<input type='radio' name='candidate_id' value='".$id."' required >".$name."<br>" );
+			$htmlOutput .= ("<label><input type='radio' name='candidate_id' value='".$id."' required >".$name."</label><br>" );
 		}
 		$htmlOutput .= "<input type='submit' value='Vote'></form>";
 	}
