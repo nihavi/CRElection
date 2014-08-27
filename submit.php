@@ -9,4 +9,7 @@
 			die("Some Error Occured. Response is not recorded. Contact Administrator.");
 		}
 	}
+	else {
+		die("No Candidate Selected");
+	}
 	header("Location: ".$base_url);
