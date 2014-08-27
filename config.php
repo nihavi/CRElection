@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors','On');
+error_reporting(E_ALL);//*/
+
 	define('DB_HOST', 'localhost');
 	define('DB_USER', 'CRE');
 	define('DB_PASS', 'cre12321');

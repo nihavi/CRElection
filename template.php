@@ -9,7 +9,7 @@
 		<div class='navbar'>
 			<div class='nav left'><?php echo $electionName; ?></div>
 		</div>
-		<div class='main'>
+		<div class='container'>
 			<?php
 				echo $htmlOutput;
 			?>

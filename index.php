@@ -18,7 +18,7 @@
 	$htmlOutput = '';
 	
 	if ( true || allowed() ) {
-		$htmlOutput .= "<form action='sumbit.php' method='post'>";
+		$htmlOutput .= "<form action='submit.php' method='post'>";
 		$candidates = get_candidates();
 		foreach ( $candidates as $id => $name ){
 			$htmlOutput .= ("<input type='radio' name='candidate_id' value='".$id."' required >".$name."<br>" );
