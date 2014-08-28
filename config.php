@@ -38,7 +38,7 @@ error_reporting(E_ALL);
 			mysqli_stmt_bind_result($query, $pass);
 			mysqli_stmt_store_result($query);
 			if(mysqli_stmt_fetch($query)){
-				if ($_SERVER['PHP_AUTH_USER'] == 'admin' && sha1($_SERVER['PHP_AUTH_PW']) != $pass){
+				if ($_SERVER['PHP_AUTH_USER'] != 'admin' || sha1($_SERVER['PHP_AUTH_PW']) != $pass){
 					auth();
 				}
 			}
