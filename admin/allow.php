@@ -7,6 +7,5 @@
 		if ( !mysqli_stmt_execute($query) ) { 
 			die("Some Error Occured. Coundn't allow voting. Contact Administrator.");
 		}
-
 	}
 	header("Location:".$base_url."admin");
