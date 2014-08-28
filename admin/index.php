@@ -1,5 +1,6 @@
 <?php
 	//Admin panel
+	$auth_required = true;
 	require_once("../config.php");
 
 	$htmlOutput = "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>

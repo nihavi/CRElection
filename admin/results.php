@@ -1,4 +1,5 @@
 <?php
+	$auth_required = true;
 	include('../config.php');
 	
 	$htmlOutput = '<table class="result"><tr><th>Candidate Name</th><th>Votes</th></tr>';

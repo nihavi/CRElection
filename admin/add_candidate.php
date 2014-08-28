@@ -1,5 +1,6 @@
 <?php
 	//Add Candidate
+	$auth_required = true;
 	require_once("../config.php");
         
         if ( isset($_POST["candidate_name"]) ) {

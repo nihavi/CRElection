@@ -1,4 +1,5 @@
 <?php
+	$auth_required = true;
 	require_once("../config.php");
 	
 	function get_candidates() {

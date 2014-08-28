@@ -1,5 +1,6 @@
 <?php
 	//Allow one vote
+	$auth_required = true;
 	require_once("../config.php");
 
 	if ( isset( $_POST["allowed"]) ) {
