@@ -41,7 +41,7 @@
 	}
 	else {
 		if ( isset( $_SESSION["done_voting"] ) && $_SESSION["done_voting"] ) {
-			$htmlOutput .= "Your response has been recorded.<br><a href=''>Refresh</a>";
+			$htmlOutput .= "Your response has been recorded.<br><a class='btn' href=''>Refresh</a>";
 			unset($_SESSION["done_voting"]);
 		}
 		else {
