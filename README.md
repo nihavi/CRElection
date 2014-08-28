@@ -7,3 +7,7 @@
 1. Create mysql Database.
 2. Run `CRE.sql` to setup database.
 3. Update `config.php` with required settings.
+
+##Note
+
+The default admin password is `password`
