@@ -9,7 +9,7 @@
 		$query = mysqli_prepare($DB, "INSERT INTO `candidates` (name) VALUES (?)");
 		mysqli_stmt_bind_param($query, 's', $_POST["candidate_name"]);
 		if ( !mysqli_stmt_execute($query) ) { 
-			die("Some Error Occured. Coundn't remove candidate. Contact Administrator.");
+			die("Some error occured. Coundn't remove candidate. Contact Administrator.");
 		}
 	    }
 	    else {

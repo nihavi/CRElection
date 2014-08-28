@@ -33,7 +33,7 @@
 			foreach ( $candidates as $id => $name ){
 				$htmlOutput .= ("<label><input type='radio' name='candidate_id' value='".$id."' required >".$name."</label><br>" );
 			}
-			$htmlOutput .= "<input type='submit' value='Vote'></form>";
+			$htmlOutput .= "<input class='btn' type='submit' value='Vote'></form>";
 		}
 		else {
 			$htmlOutput .= "No Candidates in the list.";
@@ -46,7 +46,7 @@
 		}
 		else {
 			$htmlOutput .= "<strong>Access denied.</strong> Please ask the administrator to allow you to vote. <br><a class='btn' href=''>Reload</a>";
-			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){setInterval(function(){window.location=''}, 500)},1000)}</script>";
+			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){window.location=''}, 1000)}</script>";
 		}
 	}
 	
