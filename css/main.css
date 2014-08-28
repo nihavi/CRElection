@@ -56,3 +56,33 @@ body {
 input {
 	margin: 0.4em;
 }
+
+.btn {
+    font-size: 16px;
+    line-height: 1.45em;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.3em 0.5em;
+	margin: 0.35em 0;
+    border-radius: 2px;
+    transition: background-color 0.1s;
+	background-color: #1185c0;
+    color: #fff;
+    border: 1px solid #1779AA;
+}
+
+.btn:hover {
+    background-color: #0C6FA0;
+    border: 1px solid #0D6087;
+}
+
+.btn.btn-green {
+    color: #fff;
+    background-color: #11BF14;
+    border: 1px solid #0EA010;
+}
+
+.btn.btn-green:hover {
+    background-color: #11A314;
+    border: 1px solid #107F12;
+}
