@@ -45,7 +45,7 @@
 			unset($_SESSION["done_voting"]);
 		}
 		else {
-			$htmlOutput .= "Not Allowed to vote. Ask for your right and <a href=''>Refresh</a>";
+			$htmlOutput .= "<strong>Access denied.</strong> Please ask the administrator to allow you to vote. <br><a class='btn' href=''>Reload</a>";
 			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){setInterval(function(){window.location=''}, 500)},1000)}</script>";
 		}
 	}

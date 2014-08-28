@@ -3,8 +3,10 @@
 	require_once("../config.php");
 
 	$htmlOutput = "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>
-			<input type='submit' value='Allow 1 Vote'>";
+			<input class='btn btn-green' type='submit' value='Allow 1 Vote'>";
 	
-	$htmlOutput .= "<br><br><a href='candidates.php'>Go to Add candidate</a>";
+    $htmlOutput .= "<h1>OR</h1>";
+    
+	$htmlOutput .= "<a class='btn' href='candidates.php'>Go to Add candidate</a>";
 	
 	include("../template.php");
