@@ -42,6 +42,7 @@
 	else {
 		if ( isset( $_SESSION["done_voting"] ) && $_SESSION["done_voting"] ) {
 			$htmlOutput .= "Your response has been recorded.<br><a class='btn' href=''>Refresh</a>";
+			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){window.location=''}, 3000)}</script>";
 			unset($_SESSION["done_voting"]);
 		}
 		else {

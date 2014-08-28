@@ -2,6 +2,7 @@
 	$auth_required = true;
 	include('../config.php');
 	
+	$totalVotes = 0;
 	$htmlOutput = '<table class="result"><tr><th>Candidate Name</th><th>Votes</th></tr>';
 	
 	$query = mysqli_prepare($DB, "SELECT name, votes FROM `candidates`");
@@ -10,6 +11,10 @@
 	mysqli_stmt_store_result($query);
 	while(mysqli_stmt_fetch($query)){
 		$htmlOutput .= '<tr><td>'.$name.'</td><td>'.$votes.'</td></tr>';
+		$totalVotes += $votes;
 	}
+	
+	$htmlOutput .= '<tr><td>Total</td><td>'.$totalVotes.'</td></tr>';
+	$htmlOutput .= '</table>';
 	
 	include("../template.php");
