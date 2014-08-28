@@ -38,6 +38,21 @@ body {
     color: #333;
 }
 
+.result {
+	margin: auto;
+	font-size: 1.6em;
+}
+
+.result th {
+	padding: 0.2em 2em;
+	border-bottom: 1px solid black;
+}
+
+.result td {
+	padding: 0.3em 2em;
+	border-bottom: 1px solid #555;
+}
+
 input {
 	margin: 0.4em;
 }

@@ -37,6 +37,6 @@
 	
 	$htmlOutput .= "<script>document.body.onload=function(){document.getElementsByName('candidate_name')[0].focus()}</script>";
 	
-	$htmlOutput .= "<br><br><br><br><br><br><a href='index.php'>Go to Allow Voting</a>";
+	$htmlOutput .= "<br><br><br><br><a href='".$base_url."admin/'>Go to Allow Voting</a>";
 	
 	include("../template.php");
