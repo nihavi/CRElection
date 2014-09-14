@@ -1,4 +1,4 @@
-#Portal for Class Representative Elections
+#A simple portal for onsite Elections
 
 ##Why use paper when you have a computer?
 
@@ -11,3 +11,5 @@
 ##Note
 
 The default admin password is `password`
+
+To change password, change value of `admin_pass` to `sha1('yourpassword')` in `meta` table. (You have to be real admin to do this :P)
