@@ -14,7 +14,9 @@
 		$totalVotes += $votes;
 	}
 	
-	$htmlOutput .= '<tr><td>Total</td><td>'.$totalVotes.'</td></tr>';
+	$htmlOutput .= '<tr class="total"><td>Total</td><td>'.$totalVotes.'</td></tr>';
 	$htmlOutput .= '</table>';
+
+	$htmlOutput .= "<br><br><br><br><a class='btn btn-green' href='".$base_url."admin/'>Go to Allow Voting</a>";
 	
 	include("../template.php");
