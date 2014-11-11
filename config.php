@@ -6,12 +6,14 @@ error_reporting(E_ALL);
 	define('DB_USER', 'CRE');
 	define('DB_PASS', 'cre12321');
 	define('DB_NAME', 'CRE');
-	
+
 	$base_url = 'http://localhost/CRElection/';
-	
+
 	// Update the name of the election
 	$electionName = 'CR Election';
 
+	$multiple_votes = false;
+	$max_votes = 1;
 
 
 //---------------------------------------------------------------------//
@@ -21,14 +23,14 @@ error_reporting(E_ALL);
 	if (mysqli_connect_errno()){
 			die("Failed to connect to MySQL: " . mysqli_connect_error());
 	}
-	
+
 	function auth(){
 		header('WWW-Authenticate: Basic realm="Authentication Required"');
 		header('HTTP/1.0 401 Unauthorized');
 		echo '<h1>Access denied.</h1>';
 		exit;
 	}
-	
+
 	if (!empty($auth_required)){
 		if (!isset($_SERVER['PHP_AUTH_USER'])) {
 			auth();

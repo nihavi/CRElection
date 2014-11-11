@@ -23,15 +23,17 @@
 		mysqli_stmt_fetch($query);
 		return $allowed == "1" ? true : false ;
 	}
-	
+
 	$htmlOutput = '';
-	
+
 	if ( allowed() ) {
 		$htmlOutput .= "<form action='vote.php' method='post'>";
 		$candidates = get_candidates();
-		if ( count($candidates) ) { 
+		$input_type = (empty($multiple_votes) || $max_votes <= 1) ? 'radio' : 'checkbox';
+		$input_req = ($input_type == 'radio') ? 'required' : '';
+		if ( count($candidates) ) {
 			foreach ( $candidates as $id => $name ){
-				$htmlOutput .= ("<label><input type='radio' name='candidate_id' value='".$id."' required >".$name."</label><br>" );
+				$htmlOutput .= ("<label><input type='$input_type' name='candidate_id[]' value='$id' $input_req>$name</label><br>" );
 			}
 			$htmlOutput .= "<input class='btn' type='submit' value='Vote'></form>";
 		}
@@ -50,5 +52,5 @@
 			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){window.location=''}, 1000)}</script>";
 		}
 	}
-	
+
 	include('template.php');
