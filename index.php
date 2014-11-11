@@ -18,10 +18,34 @@
 	$htmlOutput = '';
 
 	if ( allowed() ) {
-		$htmlOutput .= "<form action='vote.php' method='post'>";
+		if ( (empty($multiple_votes) || $max_votes <= 1) ) {
+			$input_type = 'radio';
+			$input_req = 'required';
+		}
+		else {
+			$htmlOutput .= "
+			<script>
+				function checkVotes(form) {
+					var allowed = ".$max_votes.";
+					var inputs = form.getElementsByTagName('input');
+					var voted = 0;
+					for ( i=0; i<inputs.length; i++ ) {
+						if ( inputs[i].name == 'candidate_id[]' && inputs[i].checked )
+							++voted;
+					}
+					if ( voted != allowed ) {
+						alert('Vote for exactly '+allowed+' candidates.');
+						return false;
+					}
+					return true;
+				}
+			</script>
+			";
+			$input_type = 'checkbox';
+			$input_req = '';
+		}
+		$htmlOutput .= "<form action='vote.php' method='post' onsubmit='return checkVotes(this)'>";
 		$candidates = get_candidates();
-		$input_type = (empty($multiple_votes) || $max_votes <= 1) ? 'radio' : 'checkbox';
-		$input_req = ($input_type == 'radio') ? 'required' : '';
 		if ( count($candidates) ) {
 			foreach ( $candidates as $id => $name ){
 				$htmlOutput .= ("<label><input type='$input_type' name='candidate_id[]' value='$id' $input_req>$name</label><br>" );
