@@ -93,3 +93,17 @@ input {
     background-color: #11A314;
     border: 1px solid #107F12;
 }
+
+.btn.btn-remove {
+    color: #fff;
+    background-color: red;
+    border: 1px solid darkred;
+}
+
+li .btn.btn-remove {
+	margin-left: 1em;
+}
+
+.btn.btn-remove:hover {
+    background-color: #e90000;
+}

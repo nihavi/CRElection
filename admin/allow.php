@@ -4,8 +4,9 @@
 	require_once("../config.php");
 
 	if ( isset( $_POST["allowed"]) ) {
-		$query = mysqli_prepare($DB, "UPDATE `meta` set meta_value = 1 WHERE meta_name='vote_allowed' ");
-		if ( !mysqli_stmt_execute($query) ) { 
+		$query = mysqli_prepare($DB, "UPDATE `clients` set allow_vote = 1 WHERE ip = ? ");
+		mysqli_stmt_bind_param($query, 's', $_POST["allowed"]);
+		if ( !mysqli_stmt_execute($query) ) {
 			die("Some Error Occured. Coundn't allow voting. Contact Administrator.");
 		}
 	}

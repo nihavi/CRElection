@@ -50,12 +50,31 @@ error_reporting(E_ALL);
 //---------------------------------------------------------------------//
 //Common functions
 
+	$IP = $_SERVER['REMOTE_ADDR'];
+
 	function allowed() {
-		global $DB;
-		$query = mysqli_prepare($DB, "SELECT meta_value FROM `meta` WHERE meta_name='vote_allowed'");
+		global $DB, $IP;
+		$query = mysqli_prepare($DB, "SELECT allow_vote FROM `clients` WHERE ip = ?");
+		mysqli_stmt_bind_param($query, 's', $IP);
 		mysqli_stmt_execute($query);
 		mysqli_stmt_bind_result($query, $allowed);
 		mysqli_stmt_store_result($query);
 		mysqli_stmt_fetch($query);
-		return $allowed == "1" ? true : false ;
+		return $allowed == 1 ? true : false ;
+	}
+
+	function get_clients() {
+		global $DB;
+		$query = mysqli_prepare($DB, "SELECT id, name, ip FROM `clients`");
+		mysqli_stmt_execute($query);
+		mysqli_stmt_bind_result($query, $id, $name, $ip);
+		mysqli_stmt_store_result($query);
+		$results = array();
+		while(mysqli_stmt_fetch($query)){
+			$results[$id] = array(
+				"name" => $name,
+				"ip" => $ip
+			);
+		}
+		return $results;
 	}

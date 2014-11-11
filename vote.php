@@ -4,8 +4,9 @@
 	session_start();
 
 	function block_voting() {
-		global $DB;
-		$query = mysqli_prepare($DB, "UPDATE `meta` set meta_value = 0 WHERE meta_name='vote_allowed' ");
+		global $DB, $IP;
+		$query = mysqli_prepare($DB, "UPDATE `clients` set allow_vote = 0 WHERE ip = ? ");
+		mysqli_stmt_bind_param($query, 's', $IP);
 		if ( !mysqli_stmt_execute($query) ) {
 			die("Some Error Occured. Contact Administrator.");
 		}
