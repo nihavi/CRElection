@@ -46,3 +46,16 @@ error_reporting(E_ALL);
 			}
 		}
 	}
+
+//---------------------------------------------------------------------//
+//Common functions
+
+	function allowed() {
+		global $DB;
+		$query = mysqli_prepare($DB, "SELECT meta_value FROM `meta` WHERE meta_name='vote_allowed'");
+		mysqli_stmt_execute($query);
+		mysqli_stmt_bind_result($query, $allowed);
+		mysqli_stmt_store_result($query);
+		mysqli_stmt_fetch($query);
+		return $allowed == "1" ? true : false ;
+	}

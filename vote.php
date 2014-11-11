@@ -1,6 +1,7 @@
 <?php
 	//Submit Request
 	require_once("config.php");
+	session_start();
 
 	function block_voting() {
 		global $DB;
@@ -10,7 +11,10 @@
 		}
 	}
 
-	session_start();
+	if ( !allowed() ) {
+		header("Location: ".$base_url);
+		die();
+	}
 	if ( isset( $_POST["candidate_id"] ) && count($_POST["candidate_id"]) ) {
 		$candidates = $_POST["candidate_id"];
 		if ( ( empty($multiple_votes) || empty($max_votes) ) && count($candidates) != 1) {
