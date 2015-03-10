@@ -55,6 +55,19 @@ body {
 	padding: 0.3em 2em;
 }
 
+.result span {
+	display: inline-block;
+}
+
+.result .pos {
+	color: green;
+	min-width: 3em;
+}
+
+.result .neg {
+	color: red;
+}
+
 .result .total {
 	border-top: 3px solid black;
 	border-bottom: none;

@@ -13,7 +13,7 @@
 	while(mysqli_stmt_fetch($query)){
 		$htmlOutput .= '<tr><td>'.$name.'</td><td>';
 		if ( $negative_votes ) {
-			$htmlOutput .= '<span class="result_pos">+'.$votes.'</span> <span class="result_neg">-'.$n_votes.'</span>';
+			$htmlOutput .= '<span class="pos">+'.$votes.'</span> <span class="neg">-'.$n_votes.'</span>';
 		}
 		else {
 			$htmlOutput .= $votes;
@@ -25,7 +25,7 @@
 
 	$htmlOutput .= '<tr class="total"><td>Total</td><td>';
 	if ( $negative_votes ) {
-		$htmlOutput .= '<span class="result_pos">+'.$total_votes.'</span> <span class="result_neg">-'.$total_n_votes.'</span>';
+		$htmlOutput .= '<span class="pos">+'.$total_votes.'</span> <span class="neg">-'.$total_n_votes.'</span>';
 	}
 	else {
 		$htmlOutput .= $total_votes;
