@@ -15,6 +15,25 @@ error_reporting(E_ALL);
 	$multiple_votes = false;
 	$max_votes = 1;
 
+	$negative_votes = false;
+	$max_n_votes = 1;
+
+//---------------------------------------------------------------------//
+// Set default values for config option
+
+	if ( !(isset($multiple_votes) && $multiple_votes === true) )
+		$multiple_votes = false;
+
+	if ( !isset($max_votes) )
+		$max_votes = 1;
+
+	if ( !(isset($negative_votes) && $negative_votes === true) ) {
+		$negative_votes = false;
+		$max_n_votes = 0;
+	}
+
+	if ( !isset($max_n_votes) )
+		$max_n_votes = 1;
 
 //---------------------------------------------------------------------//
 

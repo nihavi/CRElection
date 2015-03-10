@@ -19,6 +19,7 @@
 
 	if ( allowed() ) {
 		if ( (empty($multiple_votes) || $max_votes <= 1) ) {
+			// Check and account for multiple votes
 			$input_type = 'radio';
 			$input_req = 'required';
 		}
@@ -27,14 +28,22 @@
 			<script>
 				function checkVotes(form) {
 					var allowed = ".$max_votes.";
+					var n_allowed = ".$max_n_votes.";
 					var inputs = form.getElementsByTagName('input');
-					var voted = 0;
+					var voted = 0, n_voted = 0;
 					for ( i=0; i<inputs.length; i++ ) {
 						if ( inputs[i].name == 'candidate_id[]' && inputs[i].checked )
 							++voted;
+						else if ( inputs[i].name == 'n_candidate_id[]' && inputs[i].checked )
+							++n_voted;
 					}
-					if ( voted != allowed ) {
-						alert('Vote for exactly '+allowed+' candidates.');
+					if ( voted != allowed || n_voted != n_allowed) {
+						if ( n_allowed == 0 ) {
+							alert('Vote for exactly '+allowed+' candidates.');
+						}
+						else {
+							alert('Please cast exactly '+allowed+' positive and '+n_allowed+' negative votes.');
+						}
 						return false;
 					}
 					return true;
@@ -44,11 +53,29 @@
 			$input_type = 'checkbox';
 			$input_req = '';
 		}
+		if ( $negative_votes ) {
+			// Check and account for negative votes
+			if ( $max_n_votes <= 1) {
+				$n_input_type = 'radio';
+				$n_input_req = 'required';
+			}
+			else {
+				$n_input_type = 'checkbox';
+				$n_input_req = '';
+			}
+		}
 		$htmlOutput .= "<form action='vote.php' method='post' onsubmit='return checkVotes(this)'>";
 		$candidates = get_candidates();
 		if ( count($candidates) ) {
 			foreach ( $candidates as $id => $name ){
-				$htmlOutput .= ("<label><input type='$input_type' name='candidate_id[]' value='$id' $input_req>$name</label><br>" );
+				if ( $negative_votes ) {
+					$htmlOutput .= "<input type='$input_type' name='candidate_id[]' value='$id' $input_req>
+						<input type='$n_input_type' name='n_candidate_id[]' value='$id' $n_input_req>
+						$name<br>";
+				}
+				else {
+					$htmlOutput .= "<label><input type='$input_type' name='candidate_id[]' value='$id' $input_req>$name</label><br>";
+				}
 			}
 			$htmlOutput .= "<input class='btn' type='submit' value='Vote'></form>";
 		}
