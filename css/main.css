@@ -73,6 +73,22 @@ body {
 	border-bottom: none;
 }
 
+.vote .pos {
+	background: lime;
+	border-radius: 15px;
+	border: 2px solid #f0f0f0;
+}
+
+.vote .neg {
+	background: rgb(255, 123, 0);
+	border-radius: 15px;
+	border: 2px solid #f0f0f0;
+}
+
+.vote .name {
+	padding-left: 0.5em;
+}
+
 input {
 	margin: 0.4em;
 }

@@ -62,19 +62,23 @@
 				$n_input_type = 'checkbox';
 			}
 		}
-		$htmlOutput .= "<form action='vote.php' method='post' onsubmit='return checkVotes(this)'>";
+		$htmlOutput .= "<form action='vote.php' method='post' class='vote' onsubmit='return checkVotes(this)'>";
 		$candidates = get_candidates();
 		if ( count($candidates) ) {
+			if ( $negative_votes ) {
+				$htmlOutput .= '<table><!--tr><th>positive</th><th>negative</th><th>candidate</th></tr-->';
+			}
 			foreach ( $candidates as $id => $name ){
 				if ( $negative_votes ) {
-					$htmlOutput .= "<input type='$input_type' name='candidate_id[]' value='$id' $input_req>
-						<input type='$n_input_type' name='n_candidate_id[]' value='$id'>
-						$name<br>";
+					$htmlOutput .= "<tr><td class='pos'><input type='$input_type' name='candidate_id[]' value='$id' $input_req></td>
+						<td class='neg'><input type='$n_input_type' name='n_candidate_id[]' value='$id'></td>
+						<td class='name'>$name</td></tr>";
 				}
 				else {
 					$htmlOutput .= "<label><input type='$input_type' name='candidate_id[]' value='$id' $input_req>$name</label><br>";
 				}
 			}
+			$htmlOutput .= '</table>';
 			$htmlOutput .= "<input class='btn' type='submit' value='Vote'></form>";
 		}
 		else {
