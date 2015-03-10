@@ -23,8 +23,7 @@
 				$n_candidates = $_POST["n_candidate_id"];
 			}
 			else {
-				block_voting();
-				die("No negative votes casted. Response not recorded.");
+				$n_candidates = array();
 			}
 		}
 		// Process votes
@@ -37,7 +36,7 @@
 			block_voting();
 			die("Something is wrong");
 		}
-		else if ( count($n_candidates) != $max_n_votes ) {
+		else if ( count($n_candidates) > $max_n_votes ) {
 			block_voting();
 			die("Something is wrong");
 		}

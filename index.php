@@ -37,12 +37,12 @@
 						else if ( inputs[i].name == 'n_candidate_id[]' && inputs[i].checked )
 							++n_voted;
 					}
-					if ( voted != allowed || n_voted != n_allowed) {
+					if ( voted != allowed || n_voted > n_allowed) {
 						if ( n_allowed == 0 ) {
 							alert('Vote for exactly '+allowed+' candidates.');
 						}
 						else {
-							alert('Please cast exactly '+allowed+' positive and '+n_allowed+' negative votes.');
+							alert('Please cast exactly '+allowed+' positive and maximum '+n_allowed+' negative votes.');
 						}
 						return false;
 					}
@@ -57,11 +57,9 @@
 			// Check and account for negative votes
 			if ( $max_n_votes <= 1) {
 				$n_input_type = 'radio';
-				$n_input_req = 'required';
 			}
 			else {
 				$n_input_type = 'checkbox';
-				$n_input_req = '';
 			}
 		}
 		$htmlOutput .= "<form action='vote.php' method='post' onsubmit='return checkVotes(this)'>";
@@ -70,7 +68,7 @@
 			foreach ( $candidates as $id => $name ){
 				if ( $negative_votes ) {
 					$htmlOutput .= "<input type='$input_type' name='candidate_id[]' value='$id' $input_req>
-						<input type='$n_input_type' name='n_candidate_id[]' value='$id' $n_input_req>
+						<input type='$n_input_type' name='n_candidate_id[]' value='$id'>
 						$name<br>";
 				}
 				else {
