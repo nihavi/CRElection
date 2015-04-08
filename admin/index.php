@@ -13,14 +13,16 @@
 					for (var i in status) {
 						if (status[i].ip in client_status) {
 							if (client_status[status[i].ip] != status[i].allowed) {
-								if (status[i].allowed == true) {
-									document.getElementById(status[i].ip).classList.remove('btn-disabled');
-								}
-								else {
+								if (status[i].allowed == false) {
 									console.log('voted on ' + status[i].name);
-									document.getElementById(status[i].ip).classList.add('btn-disabled');
 								}
 							}
+						}
+						if (status[i].allowed == true) {
+							document.getElementById(status[i].ip).disabled = true;
+						}
+						else {
+							document.getElementById(status[i].ip).disabled = false;
 						}
 						client_status[status[i].ip] = status[i].allowed;
 					}
@@ -33,7 +35,7 @@
 			xmlhttp.open('GET','status_query.php',true);
 			xmlhttp.send();
 		}
-		setTimeout(req, 500);
+		window.addEventListener('load', req);
 	</script>";
 
 	$htmlOutput .= "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>";
