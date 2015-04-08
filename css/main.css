@@ -4,17 +4,17 @@ body {
 
 .navbar:before,
 .navbar:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+	content: " "; /* 1 */
+	display: table; /* 2 */
 }
 
 .navbar:after {
-    clear: both;
+	clear: both;
 }
 
 .navbar {
-    background-color: #1FA67A;
-    color: white !important;
+	background-color: #1FA67A;
+	color: white !important;
 }
 
 .nav {
@@ -31,11 +31,11 @@ body {
 }
 
 .container {
-    background-color: #f0f0f0;
-    padding: 2em;
-    width: 70%;
-    margin: 3em auto;
-    color: #333;
+	background-color: #f0f0f0;
+	padding: 2em;
+	width: 70%;
+	margin: 3em auto;
+	color: #333;
 }
 
 .result {
@@ -94,39 +94,53 @@ input {
 }
 
 .btn {
-    font-size: 16px;
-    line-height: 1.45em;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0.3em 0.5em;
+	font-size: 16px;
+	line-height: 1.45em;
+	display: inline-block;
+	text-decoration: none;
+	padding: 0.3em 0.5em;
 	margin: 0.35em 0;
-    border-radius: 2px;
-    transition: background-color 0.1s;
+	border-radius: 2px;
+	transition: background-color 0.1s;
 	background-color: #1185c0;
-    color: #fff;
-    border: 1px solid #1779AA;
+	color: #fff;
+	border: 1px solid #1779AA;
 }
 
 .btn:hover {
-    background-color: #0C6FA0;
-    border: 1px solid #0D6087;
+	background-color: #0C6FA0;
+	border: 1px solid #0D6087;
 }
 
 .btn.btn-green {
-    color: #fff;
-    background-color: #11BF14;
-    border: 1px solid #0EA010;
+	color: #fff;
+	background-color: #11BF14;
+	border: 1px solid #0EA010;
 }
 
 .btn.btn-green:hover {
-    background-color: #11A314;
-    border: 1px solid #107F12;
+	background-color: #11A314;
+	border: 1px solid #107F12;
 }
 
 .btn.btn-remove {
-    color: #fff;
-    background-color: red;
-    border: 1px solid darkred;
+	color: #fff;
+	background-color: red;
+	border: 1px solid darkred;
+}
+
+.btn.btn-disabled,
+.btn[disabled] {
+	background-color: #ccc;
+	border: 1px solid #aaa;
+	cursor: default;
+}
+
+.btn.btn-disabled:hover,
+.btn[disabled]:hover {
+	color: #777;
+	background-color: #ccc;
+	border: 1px solid #aaa;
 }
 
 li .btn.btn-remove {
@@ -134,5 +148,5 @@ li .btn.btn-remove {
 }
 
 .btn.btn-remove:hover {
-    background-color: #e90000;
+	background-color: #e90000;
 }
