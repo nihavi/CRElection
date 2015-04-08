@@ -12,7 +12,7 @@
 		foreach ( $clients as $id => $client ){
 			$name = $client["name"];
 			$ip = $client["ip"];
-			$htmlOutput .= "<li>".$name." ( ".$ip.") <button class='btn btn-remove' type='submit' name='client_ip' value='remove: ".$ip."'>Remove</button></li>";
+			$htmlOutput .= "<li>".$name." (".$ip.") <button class='btn btn-remove' type='submit' name='client_ip' value='remove: ".$ip."'>Remove</button></li>";
 		}
 		$htmlOutput .= "</ul>";
 	}
