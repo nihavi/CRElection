@@ -15,6 +15,7 @@ body {
 .navbar {
 	background-color: #1FA67A;
 	color: white !important;
+	position: relative;
 }
 
 .nav {
@@ -150,4 +151,25 @@ li .btn.btn-remove {
 
 .btn.btn-remove:hover {
 	background-color: #e90000;
+}
+
+#messages-container {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 5px;
+	margin-right: 1em;
+	color: black;
+}
+
+#message-example {
+	display: none;
+}
+
+#messages-container .message {
+	background-color: #73C8C2;
+	padding: 0.6em 1.4em;
+	margin: 0.3em 0;
+	border: 1px solid
+	border-radius: 1px;
 }

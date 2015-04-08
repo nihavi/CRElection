@@ -9,6 +9,9 @@
 	<body>
 		<div class='navbar'>
 			<div class='nav left'><?php echo $electionName; ?></div>
+			<div id="messages-container">
+				<div class="message" id="message-example"></div>
+			</div>
 		</div>
 		<div class='container'>
 			<?php
