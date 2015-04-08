@@ -133,6 +133,7 @@ input {
 .btn[disabled] {
 	background-color: #ccc;
 	border: 1px solid #aaa;
+	color: #777;
 	cursor: default;
 }
 
