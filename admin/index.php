@@ -14,7 +14,7 @@
 						if (status[i].ip in client_status) {
 							if (client_status[status[i].ip] != status[i].allowed) {
 								if (status[i].allowed == false) {
-									console.log('voted on ' + status[i].name);
+									popMsg('voted on ' + status[i].name);
 								}
 							}
 						}
@@ -36,9 +36,34 @@
 			xmlhttp.send();
 		}
 		window.addEventListener('load', req);
+
+		function popMsg(msg) {
+			var orig = document.getElementById('message-example');
+			var newMsg = orig.cloneNode(true);
+			newMsg.id = '';
+			newMsg.innerText = msg;
+			document.getElementById('messages-container').appendChild(newMsg);
+			newMsg.style.opacity = 0;
+			newMsg.offsetHeight;
+			newMsg.style.opacity = 1;
+			setTimeout(function() {
+				newMsg.style.opacity = 0;
+				newMsg.addEventListener('transitionend', function() {
+					document.getElementById('messages-container').removeChild(newMsg);
+				})
+			}, 2000);
+		}
+
+		function allow(ip) {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.open('POST','allow.php?noRed=1',true);
+			xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			var params = encodeURI('allowed=' + ip);
+			xmlhttp.send(params);
+		}
 	</script>";
 
-	$htmlOutput .= "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>";
+	$htmlOutput .= "<form action='allow.php' method='post' onsubmit='return false'><input type='hidden' name='allowed' value='true'>";
 
 	$clients = get_clients();
 	if ( count($clients) != 0 ) {
@@ -46,7 +71,7 @@
 			$name = $client["name"];
 			$ip = $client["ip"];
 			//$htmlOutput .= "<li>".$name." ( ".$ip.") <button class='btn btn-remove' type='submit' name='client_ip' value='remove: ".$ip."'>Remove</button></li>";
-			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' id='".$ip."' value='".$ip."'>Allow 1 Vote on ".$name." ( ".$ip.")</button><br>";
+			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' id='".$ip."' value='".$ip."' onclick='allow(\"".$ip."\")'>Allow 1 Vote on ".$name." ( ".$ip.")</button><br>";
 		}
 	}
 	else {

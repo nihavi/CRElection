@@ -10,4 +10,6 @@
 			die("Some Error Occured. Coundn't allow voting. Contact Administrator.");
 		}
 	}
-	header("Location:".$base_url."admin");
+	if ( empty($_GET['noRed']) ) {
+		header("Location:".$base_url."admin");
+	}
