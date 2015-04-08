@@ -1,5 +1,6 @@
 <?php
-require_once 'config.php';
+$auth_required = true;
+include('../config.php');
 
 $result = mysqli_query($DB, "SELECT * from clients");
 
