@@ -4,7 +4,7 @@
 	session_start();
 	function get_candidates() {
 		global $DB;
-		$query = mysqli_prepare($DB, "SELECT id, name FROM `candidates`");
+		$query = mysqli_prepare($DB, "SELECT id, name FROM `candidates` ORDER BY name");
 		mysqli_stmt_execute($query);
 		mysqli_stmt_bind_result($query, $id, $name);
 		mysqli_stmt_store_result($query);
