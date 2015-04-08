@@ -3,7 +3,40 @@
 	$auth_required = true;
 	require_once("../config.php");
 
-	$htmlOutput = "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>";
+	$htmlOutput = "<script>
+		var client_status = [];
+		function req() {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onload = function() {
+				if (xmlhttp.status == 200){
+					var status = JSON.parse(xmlhttp.responseText);
+					for (var i in status) {
+						if (status[i].ip in client_status) {
+							if (client_status[status[i].ip] != status[i].allowed) {
+								if (status[i].allowed == true) {
+									document.getElementById(status[i].ip).classList.remove('btn-disabled');
+								}
+								else {
+									console.log('voted on ' + status[i].name);
+									document.getElementById(status[i].ip).classList.add('btn-disabled');
+								}
+							}
+						}
+						client_status[status[i].ip] = status[i].allowed;
+					}
+				}
+				setTimeout(req, 500);
+			}
+			xmlhttp.onerror = function() {
+				setTimeout(req, 10);
+			}
+			xmlhttp.open('GET','status_query.php',true);
+			xmlhttp.send();
+		}
+		setTimeout(req, 500);
+	</script>";
+
+	$htmlOutput .= "<form action='allow.php' method='post'><input type='hidden' name='allowed' value='true'>";
 
 	$clients = get_clients();
 	if ( count($clients) != 0 ) {
@@ -11,7 +44,7 @@
 			$name = $client["name"];
 			$ip = $client["ip"];
 			//$htmlOutput .= "<li>".$name." ( ".$ip.") <button class='btn btn-remove' type='submit' name='client_ip' value='remove: ".$ip."'>Remove</button></li>";
-			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' value='".$ip."'>Allow 1 Vote on ".$name." ( ".$ip.")</button><br>";
+			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' id='".$ip."' value='".$ip."'>Allow 1 Vote on ".$name." ( ".$ip.")</button><br>";
 		}
 	}
 	else {
