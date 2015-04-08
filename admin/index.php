@@ -46,7 +46,7 @@
 			$name = $client["name"];
 			$ip = $client["ip"];
 			//$htmlOutput .= "<li>".$name." ( ".$ip.") <button class='btn btn-remove' type='submit' name='client_ip' value='remove: ".$ip."'>Remove</button></li>";
-			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' id='".$ip."' value='".$ip."'>Allow 1 Vote on ".$name." ( ".$ip.")</button><br>";
+			$htmlOutput .= "<button class='btn btn-green' type='submit' name='allowed' id='".$ip."' value='".$ip."'>Allow 1 Vote on ".$name." (".$ip.")</button><br>";
 		}
 	}
 	else {
