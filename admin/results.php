@@ -6,7 +6,7 @@
 	$total_n_votes = 0;
 	$htmlOutput = '<table class="result"><tr><th>Candidate Name</th><th>Votes</th></tr>';
 
-	$query = mysqli_prepare($DB, "SELECT name, votes, n_votes FROM `candidates` ORDER BY name");
+	$query = mysqli_prepare($DB, "SELECT name, votes, n_votes FROM `candidates` ORDER BY votes DESC, name ASC");
 	mysqli_stmt_execute($query);
 	mysqli_stmt_bind_result($query, $name, $votes, $n_votes);
 	mysqli_stmt_store_result($query);
