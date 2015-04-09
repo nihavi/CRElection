@@ -41,7 +41,7 @@
 			var orig = document.getElementById('message-example');
 			var newMsg = orig.cloneNode(true);
 			newMsg.id = '';
-			newMsg.innerText = msg;
+			newMsg.innerHTML = msg;
 			document.getElementById('messages-container').appendChild(newMsg);
 			newMsg.style.opacity = 0;
 			newMsg.offsetHeight;
