@@ -17,6 +17,7 @@
 		die();
 	}
 	if ( isset( $_POST["candidate_id"] ) && count($_POST["candidate_id"]) ) {
+		$candidates = $_POST["candidate_id"];
 		if ( $negative_votes ) {
 			// First also check for negative votes
 			if ( isset( $_POST["n_candidate_id"] ) && count($_POST["n_candidate_id"]) ) {
@@ -25,18 +26,24 @@
 			else {
 				$n_candidates = array();
 			}
+			if ( count($n_candidates) > $max_n_votes ) {
+				block_voting();
+				die("Something is wrong");
+			}
+			foreach ( $n_candidates as $candidate ) {
+				$query = mysqli_prepare($DB, "UPDATE `candidates` set n_votes = n_votes + 1 WHERE id=?");
+				mysqli_stmt_bind_param($query, 'i', $candidate);
+				if ( !mysqli_stmt_execute($query) ) {
+					die("Some Error Occured. Response is not recorded. Contact Administrator.");
+				}
+			}
 		}
 		// Process votes
-		$candidates = $_POST["candidate_id"];
 		if ( ( empty($multiple_votes) || empty($max_votes) ) && count($candidates) != 1) {
 			block_voting();
 			die("Something is wrong");
 		}
 		else if ( count($candidates) != $max_votes ) {
-			block_voting();
-			die("Something is wrong");
-		}
-		else if ( count($n_candidates) > $max_n_votes ) {
 			block_voting();
 			die("Something is wrong");
 		}
@@ -47,13 +54,7 @@
 				die("Some Error Occured. Response is not recorded. Contact Administrator.");
 			}
 		}
-		foreach ( $n_candidates as $candidate ) {
-			$query = mysqli_prepare($DB, "UPDATE `candidates` set n_votes = n_votes + 1 WHERE id=?");
-			mysqli_stmt_bind_param($query, 'i', $candidate);
-			if ( !mysqli_stmt_execute($query) ) {
-				die("Some Error Occured. Response is not recorded. Contact Administrator.");
-			}
-		}
+
 		block_voting();
 	}
 	else {
