@@ -7,7 +7,14 @@ error_reporting(E_ALL);
 	define('DB_PASS', 'cre12321');
 	define('DB_NAME', 'CRE');
 
-	$base_url = 'http://localhost/CRElection/';
+	$host  = $_SERVER['HTTP_HOST'];
+	$host_upper = strtoupper($host);
+	$path = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+	if(strpos($path, "admin")){
+		$path = substr($path, 0, strpos($path, "/admin"));
+	}
+	$base_url = "http://".$host.$path."/";
 
 	// Update the name of the election
 	$electionName = 'CR Election';

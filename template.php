@@ -5,6 +5,7 @@
 		<link href='<?php echo $base_url; ?>css/normalize.css' rel='stylesheet'>
 		<link href='<?php echo $base_url; ?>css/main.css' rel='stylesheet'>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="<?php echo $base_url; ?>jquery.js"></script>
 	</head>
 	<body>
 		<div class='navbar'>
