@@ -17,10 +17,10 @@ error_reporting(E_ALL);
 	$base_url = "http://".$host.$path."/";
 
 	// Update the name of the election
-	$electionName = 'CR Election';
+	$electionName = 'FC Elections 2016';
 
-	$multiple_votes = false;
-	$max_votes = 1;
+	$multiple_votes = true;
+	$max_votes = 3;
 
 	$negative_votes = false;
 	$max_n_votes = 1;
