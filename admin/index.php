@@ -61,6 +61,34 @@
 			var params = encodeURI('allowed=' + ip);
 			xmlhttp.send(params);
 		}
+
+    function camelize(str) {
+      return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
+        return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+      }).replace(/\s+/g, '');
+    }
+
+    var admin_verified = false;
+    
+    function verify() {
+      if (admin_verified) {
+        admin_verified = false;
+        document.getElementById('result_btn').setAttribute('disabled','');
+        document.getElementById('result_btn').innerHTML = 'View Results';
+        return true;
+      }
+      var str = Math.random().toString(36).substring(8) + ' ' + Math.random().toString(36).substring(5);
+      var verify = camelize(str);
+      var person = prompt('Please confirm that you are human, by typing the following string in camel case', str);
+      if (person != null) {
+        if (person === verify) {
+          admin_verified=true;
+          document.getElementById('result_btn').removeAttribute('disabled','');
+          document.getElementById('result_btn').innerHTML = 'Click to see final result !!';
+        }
+      }
+      return false;
+};
 	</script>";
 
 	$htmlOutput .= "<form action='allow.php' method='post' onsubmit='return false'><input type='hidden' name='allowed' value='true'>";
@@ -88,6 +116,6 @@
 
 	$htmlOutput .= "<h1>OR</h1>";
 
-	$htmlOutput .= "<a class='btn' href='results.php'>View Results</a>";
+	$htmlOutput .= "<a id='result_btn' class='btn' onclick='return verify()' href='results.php' target='_blank' disabled >View Results</a>";
 
 	include("../template.php");
