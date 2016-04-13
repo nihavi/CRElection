@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Election Portal</title>
+		<meta charset="utf-8">
 		<link href='<?php echo $base_url; ?>css/normalize.css' rel='stylesheet'>
 		<link href='<?php echo $base_url; ?>css/main.css' rel='stylesheet'>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
