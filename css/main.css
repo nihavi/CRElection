@@ -1,19 +1,39 @@
+* {
+	box-sizing: border-box;
+}
 body {
 	background-color: #fbfbfb;
+	font-family: "Helvatica";
+	background-image: url('https://wallpaperspal.com/wp-content/uploads/Miranda-Kerr-Sexy-Swimsuit-Wallpaper.jpg');
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+.text-center {
+	text-align: center;
 }
 
 .navbar:before,
-.navbar:after {
+.navbar:after,
+.clearfix:before,
+.clearfix:after {
 	content: " "; /* 1 */
 	display: table; /* 2 */
 }
 
-.navbar:after {
+.navbar:after,
+.clearfix:after {
 	clear: both;
 }
 
 .navbar {
 	background-color: #1FA67A;
+	background-color: rgb(79,194,248);
 	color: white !important;
 	position: relative;
 }
@@ -32,7 +52,9 @@ body {
 }
 
 .container {
-	background-color: #f0f0f0;
+	background-color: #f2f2f1;
+	background-color: rgba(242,242,241, .5);
+	box-shadow: 0 0 15px 0 rgba(0,0,0,0.3);
 	padding: 2em;
 	width: 70%;
 	margin: 3em auto;
@@ -173,4 +195,36 @@ li .btn.btn-remove {
 	border: 1px solid
 	border-radius: 1px;
 	transition: all 1s;
+}
+
+.stv-half {
+	width: 50%;
+	float: left;
+}
+
+.stv-list {
+	list-style: none;
+	padding: 0;
+}
+
+.stv-list > li {
+	background-color: rgb(242,225,200);
+	background-color: rgb(239,251,65);
+	text-align: left;
+	height: 40px;
+	line-height: 30px;
+	padding: 5px 10px;
+	margin: 5px 25px;
+}
+
+.stv-list > li > button {
+	float: right;
+	border: 0;
+	box-shadow: 0 0 0 1px rgb(213,213,213) inset;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.selected-candidate {
+	cursor: move;
 }
