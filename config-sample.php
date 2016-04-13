@@ -18,6 +18,9 @@ error_reporting(E_ALL);
 	$negative_votes = false;
 	$max_n_votes = 1;
 
+	$is_stv = false;
+	$delegation_size = 1;
+
 //---------------------------------------------------------------------//
 // Set default values for config option
 
@@ -34,6 +37,9 @@ error_reporting(E_ALL);
 
 	if ( !isset($max_n_votes) )
 		$max_n_votes = 1;
+
+	if ( !isset($is_stv) )
+		$is_stv = false;
 
 //---------------------------------------------------------------------//
 
@@ -69,7 +75,9 @@ error_reporting(E_ALL);
 //---------------------------------------------------------------------//
 //Common functions
 
-	$IP = $_SERVER['REMOTE_ADDR'];
+	if (php_sapi_name() !== 'cli') {
+		$IP = $_SERVER['REMOTE_ADDR'];
+	}
 
 	function allowed() {
 		global $DB, $IP;
@@ -94,6 +102,19 @@ error_reporting(E_ALL);
 				"name" => $name,
 				"ip" => $ip
 			);
+		}
+		return $results;
+	}
+
+	function get_candidates() {
+		global $DB;
+		$query = mysqli_prepare($DB, "SELECT id, name FROM `candidates` ORDER BY name");
+		mysqli_stmt_execute($query);
+		mysqli_stmt_bind_result($query, $id, $name);
+		mysqli_stmt_store_result($query);
+		$results = array();
+		while(mysqli_stmt_fetch($query)){
+			$results[$id] = $name;
 		}
 		return $results;
 	}

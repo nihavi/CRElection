@@ -10,7 +10,7 @@
 			$query = mysqli_prepare($DB, "INSERT INTO `clients` (name, ip) VALUES (?, ?)");
 			mysqli_stmt_bind_param($query, 'ss', $name, $ip);
 			if ( !mysqli_stmt_execute($query) ) {
-				die("Some error occured. Coundn't add client. Contact Administrator.");
+				die("Some error occured. Couldn't add client. Contact Administrator.");
 			}
 		}
 		else {
@@ -19,7 +19,7 @@
 			$query = mysqli_prepare($DB, "DELETE FROM `clients` WHERE ip = ?");
 			mysqli_stmt_bind_param($query, 's', $ip);
 			if ( !mysqli_stmt_execute($query) ) {
-				die("Some Error Occured. Coundn't remove client. Contact Administrator.");
+				die("Some error occurred. Couldn't remove client. Contact Administrator.");
 			}
 		}
 	}

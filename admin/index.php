@@ -74,7 +74,7 @@
 		}
 	}
 	else {
-		$htmlOutput .= "There are no client added<br>";
+		$htmlOutput .= "There are no clients added.<br>";
 	}
 	$htmlOutput .= "</form>";
 
