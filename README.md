@@ -1,14 +1,14 @@
-#A simple portal for onsite Elections
+# A simple portal for onsite elections
 
-##Why use paper when you have a computer?
+## Why use paper when you have a computer?
 
-##Setup
+## Setup
 
-1. Create mysql Database.
+1. Create mysql database.
 2. Run `CRE.sql` to setup database.
-3. Update `config.php` with required settings.
+3. Copy `config-sample.php` to `config.php` and update with required settings.
 
-##Features
+## Features
 
 - Simple, easy-to-use interface for voters.
 - Again, simple, easy-to-use interface for admins.
@@ -18,8 +18,8 @@
 - Multiple client support.
 - Admin has to allow each and every vote from each client to prevent from abuse.
 
-##Note
+## Note
 
 The default admin password is `password`
 
-To change password, change value of `admin_pass` to `sha1('yourpassword')` in `meta` table. (You have to be real admin to do this :P)
+To change password, change value of `admin_pass` to `sha1('yourpassword')` in `meta` table. (You have to be a real admin to do this :P)

@@ -18,6 +18,7 @@ error_reporting(E_ALL);
 	$negative_votes = false;
 	$max_n_votes = 1;
 
+	$is_stv = false;
 //---------------------------------------------------------------------//
 // Set default values for config option
 
