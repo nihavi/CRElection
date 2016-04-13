@@ -66,6 +66,7 @@
 		// is STV
 		if ( isset( $_POST["candidates_string"] ) && strlen($_POST["candidates_string"]) ) {
 			$candidates = explode(" ", $_POST["candidates_string"]);
+			$candidates_string = $_POST["candidates_string"];
 
 			$uniq_candidates = array_unique($candidates);
 
@@ -81,12 +82,11 @@
 				die("Something is wrong");
 			}
 
-			$mysqli_autocommit($DB, false);
+			mysqli_autocommit($DB, false);
 			mysqli_begin_transaction($DB);
 
 			$id_query = mysqli_query($DB, "SELECT id from `votes` WHERE vote_string IS NULL ORDER BY RAND() LIMIT 1");
 			$id = mysqli_fetch_assoc($id_query)['id'];
-
 			$query = mysqli_prepare($DB, "UPDATE `votes` SET vote_string = ? WHERE id = ?");
 			mysqli_stmt_bind_param($query, 'si', $candidates_string, $id);
 
@@ -95,6 +95,7 @@
 			}
 			mysqli_commit($DB);
 			mysqli_autocommit($DB, true);
+			block_voting();
 		} else {
 			block_voting();
 			die("Some error occurred. Did not receive vote. Please contact administrator.");
