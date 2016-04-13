@@ -36,6 +36,9 @@ error_reporting(E_ALL);
 	if ( !isset($max_n_votes) )
 		$max_n_votes = 1;
 
+	if ( !isset($is_stv) )
+		$is_stv = false;
+
 //---------------------------------------------------------------------//
 
 	// Database connection
