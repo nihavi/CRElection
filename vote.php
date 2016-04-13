@@ -8,7 +8,7 @@
 		$query = mysqli_prepare($DB, "UPDATE `clients` set allow_vote = 0 WHERE ip = ? ");
 		mysqli_stmt_bind_param($query, 's', $IP);
 		if ( !mysqli_stmt_execute($query) ) {
-			die("Some Error Occured. Contact Administrator.");
+			die("Some error occurred. Contact Administrator.");
 		}
 	}
 
@@ -44,14 +44,14 @@
 			$query = mysqli_prepare($DB, "UPDATE `candidates` set votes = votes + 1 WHERE id=?");
 			mysqli_stmt_bind_param($query, 'i', $candidate);
 			if ( !mysqli_stmt_execute($query) ) {
-				die("Some Error Occured. Response is not recorded. Contact Administrator.");
+				die("Some error occurred. Response was not recorded. Contact Administrator.");
 			}
 		}
 		foreach ( $n_candidates as $candidate ) {
 			$query = mysqli_prepare($DB, "UPDATE `candidates` set n_votes = n_votes + 1 WHERE id=?");
 			mysqli_stmt_bind_param($query, 'i', $candidate);
 			if ( !mysqli_stmt_execute($query) ) {
-				die("Some Error Occured. Response is not recorded. Contact Administrator.");
+				die("Some error occurred. Response was not recorded. Contact Administrator.");
 			}
 		}
 		block_voting();

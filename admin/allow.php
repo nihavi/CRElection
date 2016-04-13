@@ -7,7 +7,7 @@
 		$query = mysqli_prepare($DB, "UPDATE `clients` set allow_vote = 1 WHERE ip = ? ");
 		mysqli_stmt_bind_param($query, 's', $_POST["allowed"]);
 		if ( !mysqli_stmt_execute($query) ) {
-			die("Some Error Occured. Coundn't allow voting. Contact Administrator.");
+			die("Some error occurred. Couldn't allow voting. Please contact Administrator.");
 		}
 	}
 	if ( empty($_GET['noRed']) ) {
