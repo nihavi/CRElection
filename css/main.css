@@ -52,7 +52,7 @@ h3 {
 
 .container {
 	background-color: #f2f2f1;
-	background-color: rgba(242,242,241, .5);
+	background-color: rgba(255, 255, 255, .8);
 	box-shadow: 0 0 15px 0 rgba(0,0,0,0.3);
 	padding: 2em;
 	width: 70%;
@@ -207,8 +207,7 @@ li .btn.btn-remove {
 }
 
 .stv-list > li {
-	background-color: rgb(242,225,200);
-	background-color: rgb(239,251,65);
+	background-color: #eee;
 	text-align: left;
 	height: 40px;
 	line-height: 30px;
@@ -223,13 +222,14 @@ li .btn.btn-remove {
 .stv-list > li > button {
 	float: right;
 	border: 0;
-	box-shadow: 0 0 0 1px rgb(213,213,213) inset;
 	padding-left: 20px;
 	padding-right: 20px;
+	background-color: #1D94D0;
+	color: white;
 }
 
 .stv-list > li > button:hover {
-	box-shadow: 0 0 0 1px rgb(180,180,180) inset;
+	background-color: #057cb8;
 }
 
 .selected-candidate {
