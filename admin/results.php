@@ -41,12 +41,14 @@
 	} else {
 		if (isset($_GET['type']) && $_GET['type'] == 'text') {
 			header('Content-Type: text');
+			header('Content-Disposition: attachment; filename="votes.txt"');
 			$query = mysqli_query($DB, "SELECT vote_string from votes WHERE vote_string IS NOT NULL");
 
 			while ($result = $query->fetch_assoc()) {
 				echo $result['vote_string'] . "\n";
 			}
 		} else {
-			echo 'STV is being followed. To view the plaintext dump, visit <a href="?type=text">results.php?type=text</a>';
+			$htmlOutput = 'STV is being followed. To view the plaintext dump, visit <a href="?type=text">results.php?type=text</a>';
 		}
+		include("../template.php");
 	}
