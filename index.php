@@ -31,8 +31,12 @@
 				</div>
 				<div class="stv-half">
 					<h3>Your preference</h3>
-					<ul class="stv-list preference-order">
-					</ul>
+					<div class="stv-pref-container">
+						<ul class="stv-list stv-index">
+						</ul>
+						<ul class="stv-list preference-order">
+						</ul>
+					</div>
 					<form action='vote.php' method='post' class='vote' onsubmit='return checkVotes(this)'>
 						<input type="hidden" name="candidates_string" class="final-preference-order">
 						<input type="submit" class="btn" value="Submit">
@@ -51,24 +55,40 @@
 			        }
 			        return num + 'th';
 			    }
+				var setIndexLI = function (count) {
+					var $stvIndex = $('.stv-index').empty();
+					for (var i = 0; i < count; i++) {
+						$stvIndex.append( $('<li>').text(i+1) );
+					}
+				};
 				var voteUp = function () {
 					var $voteCounter = $('.vote-count-ordinal');
 					var count = parseInt($voteCounter.text());
+					setIndexLI(count);
 					$voteCounter.text(ordinalize(count + 1));
 				};
 				var voteDown = function () {
 					var $voteCounter = $('.vote-count-ordinal');
 					var count = parseInt($voteCounter.text());
+					setIndexLI(count - 2);
 					$voteCounter.text(ordinalize(count - 1));
 				};
 				var checkVotes = function (form) {
-					form.candidates_string.value = Array.from(
+					var minVotes = <?php echo $delegation_size; ?>;
+					var maxVotes = <?php echo count($candidates); ?>;
+					var votes = Array.from(
 						$('.preference-order')
 							.children()
 							.map(function (a, b) {
 								return $(this).data('id');
 							})
-					).join(' ');
+					);
+					var numOfVotes = votes.length;
+					if (numOfVotes < minVotes || numOfVotes > maxVotes) {
+						alert("You have to vote for atleast "+minVotes+" candidates");
+						return false;
+					}
+					form.candidates_string.value = votes.join(' ');
 				};
 				$(function () {
 					var remove = function () {
@@ -81,7 +101,7 @@
 					var getSelectedCandidateLI = function (name, id) {
 						return $('<li class="selected-candidate clearfix"></li>')
 							.data('id', id)
-							.html('⋮ ⋮ &nbsp;&nbsp;&nbsp;' + name)
+							.html('⋮ &nbsp;&nbsp;&nbsp;' + name)
 							.append( $('<button>').text('✖').click(remove).data('id', id ) );
 					};
 					var $preferenceOrderList = $('.preference-order');
@@ -174,7 +194,7 @@
 	else {
 		if ( isset( $_SESSION["done_voting"] ) && $_SESSION["done_voting"] ) {
 			$htmlOutput .= "Your response has been recorded.<br><a class='btn' href=''>Refresh</a>";
-			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){window.location=''}, 3000)}</script>";
+			$htmlOutput .= "<script>document.body.onload=function(){setTimeout(function(){window.location=''}, 5000)}</script>";
 			unset($_SESSION["done_voting"]);
 		}
 		else {

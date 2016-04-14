@@ -235,3 +235,21 @@ li .btn.btn-remove {
 .selected-candidate {
 	cursor: move;
 }
+
+.stv-index {
+	margin: 0;
+	position: absolute;
+	top: 0;
+}
+
+.stv-index > li:first-child {
+	margin-top: 0;
+}
+
+.stv-pref-container {
+	position: relative;
+}
+
+.preference-order {
+	margin-left: 45px;
+}
