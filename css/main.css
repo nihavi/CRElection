@@ -216,12 +216,20 @@ li .btn.btn-remove {
 	margin: 5px 25px;
 }
 
+.stv-list > li.sortable-ghost {
+	opacity: .5;
+}
+
 .stv-list > li > button {
 	float: right;
 	border: 0;
 	box-shadow: 0 0 0 1px rgb(213,213,213) inset;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.stv-list > li > button:hover {
+	box-shadow: 0 0 0 1px rgb(180,180,180) inset;
 }
 
 .selected-candidate {
