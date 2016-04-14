@@ -3,13 +3,26 @@
 	require_once("config.php");
 	session_start();
 
+	function my_shuffle($candidates) {
+		$n = [];
+		foreach ($candidates as $id => $candidate) {
+			$n[] = [ $id, $candidate ];
+		}
+		shuffle($n);
+		$s = [];
+		foreach ($n as $value) {
+			$s[$value[0]] = $value[1];
+		}
+		return $s;
+	}
+
 	$htmlOutput = '';
 
 	if ( allowed() ) {
 		if (isset($is_stv) && $is_stv) {
 			$htmlOutput .= '';
 			$candidates = get_candidates();
-			//$candidates = array_merge($candidates);
+			$candidates = my_shuffle($candidates);
 			ob_start();
 			?>
 			<script src="<?php echo $base_url; ?>bower_components/jquery/dist/jquery.min.js"></script>
