@@ -72,26 +72,31 @@
 
 			if (count($uniq_candidates) != count($candidates)) {
 				block_voting();
-				die("Something is wrong");
+				die("Error: Duplicate candidates! Something is wrong.");
 			}
 
 			$registered_candidates = get_candidates();
 
 			if ( count($candidates) > count($registered_candidates) || count($candidates) < $delegation_size) {
 				block_voting();
-				die("Something is wrong");
+				die("Error: Number of votes out of range! Something is wrong.");
 			}
 
 			mysqli_autocommit($DB, false);
 			mysqli_begin_transaction($DB);
 
 			$id_query = mysqli_query($DB, "SELECT id from `votes` WHERE vote_string IS NULL ORDER BY RAND() LIMIT 1");
-			$id = mysqli_fetch_assoc($id_query)['id'];
+			$result = mysqli_fetch_assoc($id_query);
+			if ($result) {
+				$id = $result['id'];
+			} else {
+				die('Error: <code>NO_ROWS_LEFT</code>. <strong>Please inform an administrator immediately.</strong>');
+			}
 			$query = mysqli_prepare($DB, "UPDATE `votes` SET vote_string = ? WHERE id = ?");
 			mysqli_stmt_bind_param($query, 'si', $candidates_string, $id);
 
 			if ( !mysqli_stmt_execute($query) ) {
-				die("Some error occurred. Response was not recorded. Contact Administrator.");
+				die("Some error occurred. Response was not Error: Number of votes out of range. Something is wrong.recorded. Contact Administrator.");
 			}
 			mysqli_commit($DB);
 			mysqli_autocommit($DB, true);
