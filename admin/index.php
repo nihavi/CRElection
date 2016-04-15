@@ -80,14 +80,14 @@
 
 	$htmlOutput .= "<h1>OR</h1>";
 
-	$htmlOutput .= "<a class='btn' href='candidates.php'>Go to Add candidate</a>";
+	$htmlOutput .= "<a class='btn' href='".$base_url."admin/candidates.php'>Go to Add candidate</a>";
 
 	$htmlOutput .= "<h1>OR</h1>";
 
-	$htmlOutput .= "<a class='btn' href='clients.php'>Go to Manage Clients</a>";
+	$htmlOutput .= "<a class='btn' href='".$base_url."admin/clients.php'>Go to Manage Clients</a>";
 
 	$htmlOutput .= "<h1>OR</h1>";
 
-	$htmlOutput .= "<a class='btn' href='results.php'>View Results</a>";
+	$htmlOutput .= "<a class='btn' href='".$base_url."admin/results.php'>View Results</a>";
 
 	include("../template.php");
