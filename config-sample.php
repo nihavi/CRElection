@@ -18,7 +18,13 @@ error_reporting(E_ALL);
 	$negative_votes = false;
 	$max_n_votes = 1;
 
+	// STV config
+	
+	// If using STV, also need to prepare votes using the admin/prepare-votes.php
+	// command line script.
 	$is_stv = false;
+
+	// Number of available positions
 	$delegation_size = 1;
 
 //---------------------------------------------------------------------//
