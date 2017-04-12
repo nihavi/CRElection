@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `candidates` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `votes` int(11) NOT NULL,
-  `n_votes` int(11) NOT NULL
+  `votes` int(11) NOT NULL DEFAULT 0,
+  `n_votes` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
